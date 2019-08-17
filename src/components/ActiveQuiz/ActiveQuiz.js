@@ -2,22 +2,25 @@ import React from 'react'
 import './ActiveQuiz.css'
 import AnswersList from './AnswersList/AnswersList'
 
-const ActiveQuiz = (props) => {
+const ActiveQuiz = ({answers, question, onAnswerClick, 
+                      quizLength, answerNumber, state}) => {
   return (
     <div className='ActiveQuiz'>
       <p className='Question'>
         <span>
           <strong>
-            1.
+            {answerNumber}.
           </strong>&nbsp;
-          Как дела?
+          {question}
         </span>
 
-        <small>4 из 12</small>
+        <small>{answerNumber} из { quizLength }</small>
       </p>
 
       <AnswersList
-         answers={props.answers} />
+        state={state}
+        answers={answers}
+        onAnswerClick={onAnswerClick} />
     </div>
   )
 }
